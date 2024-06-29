@@ -1,0 +1,73 @@
+* Calculating rmsf for the ligands compared to minimized structure
+* during lambda dynamics simulation
+*FILENAME: rmsf-residue.str
+*PURPOSE: average atomic RMS fluctuations (around average structure from trajectory)
+* per residue for protein non hydrogen atoms
+*AUTHOR: Lennart Nilsson, Karolinska Institutet (October 8, 2003)
+*
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+set box = 92.1673522
+set builddir = prep
+
+!! Read in toppar stream file
+bomlev -2
+stream @builddir/toppar.str
+bomlev 0
+
+stream @builddir/5ag5_cof_rg.str
+
+stream @builddir/6.str
+stream @builddir/6r.str
+
+read psf card name prep/minimized.psf
+read coor card name prep/minimized.crd 
+coor copy comp
+
+!----- IMAGES ---------
+crystal define cubic @box @box @box 90. 90. 90.
+crystal build cutoff 14 nope 0
+calc boxhalf = 0 !@box / 2
+define bulks sele segid bwat .or. segid pot .or. segid cl .or. segid sod .or. -
+  segid cal .or. segid mg .or. segid ces end
+
+image byseg xcen @boxhalf ycen @boxhalf zcen @boxhalf sele .not. resname tip3 .and. .not. bulks end ! protein and ligand
+image byres xcen @boxhalf ycen @boxhalf zcen @boxhalf sele resname tip3 .or. bulks end
+
+!------ ORIENT TRAJ ---------
+
+open unit 13 read unform name @dir/dcd/lmnmt_flat.dcd_@myrep
+traj query unit 13
+
+open write unit 14 file name tmp.dcd
+
+!"Merge" to create a new trajectory with rligein only. The protein will
+!  be re-oriented to have minimum CA rms wrt reference in comparison set
+merge firstu 13 nunit 1 output 14 sele all end - !first selection to write atoms to new traj
+      recenter orient sele .not. resname tip3 end ! this selection for root mean square fitting
+
+close unit 13
+ 
+!------ RMSF for ligands -----------------
+define ligands sele (resname xray .or. resname revr) .and. (.not. hydrogen) show end
+
+open unit 15 read unform name tmp.dcd
+traj query unit 15
+
+coor dyna firstu 15 nunit 1
+bomlev -1
+delete atom sele .not. (ligands) end ! we don't want rmsd for the waters or protein
+bomlev 0
+
+coor swap
+
+write coor card name @dir/rmsf_@myrep.crd
+* RMSF is in WMAIN column
+*
+
+write coor pdb card name @dir/rmsf_@myrep.pdb
+* RMSF is in WMAIN column
+*
+
+system "rm tmp.dcd"
+
+stop

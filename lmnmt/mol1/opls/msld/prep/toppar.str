@@ -1,0 +1,12 @@
+* Generated for use with MSLD files prepared with lig_build (JZV 06/2018)
+* Stream file for topology and parameter reading
+*
+
+! protein topology and parameter
+read rtf card name prep/toppar/top_opls_aam.inp
+read param flex card name prep/toppar/par_opls_aam.inp
+
+! Custom topology and parameter files for LIG
+read rtf card name prep/ld.rtf append
+read param flex card name prep/ld.prm append
+

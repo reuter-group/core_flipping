@@ -1,0 +1,11 @@
+#!/bin/bash
+
+END=2
+for((i=9;i>=END;i--))
+do
+export j=`expr $i + 1`
+echo $i $j
+
+mv fmax"$i".inp fmax"$j".inp
+
+done

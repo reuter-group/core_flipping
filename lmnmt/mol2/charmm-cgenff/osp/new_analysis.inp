@@ -1,0 +1,134 @@
+* CHARMM input file for analyzing fixed lambda-dynamics
+* Written by Parveen Gartan 4 Oct 2022
+*
+
+set builddir = prep
+set box = 92.1468114
+set temp = 298.15
+set nwins = 3
+!set lam1 = 0.5 ! xray
+!set lam2 = 0.5 ! revr
+
+! perturbation variables
+set nsites = 1 
+set nsubs1 = 2
+set nblocks = 2
+
+stream "variables.inp"
+
+bomblev -2
+
+!! Read in toppar stream file
+stream @builddir/toppar.str
+
+stream @builddir/5ag5_cof_rg.str
+
+stream @builddir/7_rg.str
+stream @builddir/7r_rg.str
+
+bomlev 0
+
+read psf card name @builddir/minimized.psf
+read coor card name @builddir/minimized.crd
+
+!! Define MSLD substituent selections
+define site1_sub1 select resname XRAY end
+define site1_sub2 select resname REVR end
+
+crystal define cubic @box @box @box 90. 90. 90.
+crystal build cutoff 14 nope 0
+calc boxhalf = 0 !@box / 2
+define bulks sele segid bwat .or. segid pot .or. segid cl .or. segid sod .or. -
+  segid cal .or. segid mg .or. segid ces end
+
+image byseg xcen @boxhalf ycen @boxhalf zcen @boxhalf sele .not. resname tip3 .and. .not. bulks end ! protein and ligand
+image byres xcen @boxhalf ycen @boxhalf zcen @boxhalf sele resname tip3 .or. bulks end
+
+!---------------------------------------------------------------------------
+! Analyze fixed l-dynamics trajectory
+!---------------------------------------------------------------------------
+set j 0
+label loop_lambda
+
+stream ../fconstants/fmax@j.inp
+
+calc blockplusone = @nblocks + 1
+!! BLOCK setup
+BLOCK @blockplusone
+   clear
+END
+BLOCK @blockplusone !RX! NREP @nreps
+   Call 2 sele site1_sub1 show end
+   Call 3 sele site1_sub2 show end
+
+   qldm theta
+   lang temp @temp
+   !RX! phmd ph 7
+   soft on   ! this turns on soft-cores
+   pmel ex   ! this turns on PME
+
+   ldin 1 1.0   0.0  5.0  0.0 5.0
+   ldin 2 @lam1 0.0  5.0  0.0 5.0 !RX! NONE      !! lams1s1 = 0.0 => no biasing potential or reference free energy
+   ldin 3 @lam2 0.0  5.0  0.0 5.0 !RX! UNEG 7.0  !! lams1s2 = 0.0 => no biasing potential or reference free energy
+
+   set excl1 = 2 3
+   excl @excl1
+
+   !rmla bond thet dihe impr
+   rmla bond thet impr
+   msld 0  1  1 ffix !fnex @fnex
+   msma
+
+END
+
+!stream ../fconstants/fmax@j.inp
+
+stream @builddir/noe_xray.str"
+stream @builddir/noe_revr.str"
+
+stream ../nbond.str
+
+open unit 44 read file name "dcd/@{SYSNAME}_flat.dcd_@MYREP"
+traj query unit 44
+
+set skip = 10000
+
+calc stop = ?nstep / @skip 
+
+traj firstu 44 nunit 1 skip @skip ! nocheck ! use whole trajectory, saving freq = 1000 so, skipping frames here
+
+open write unit 21 form name @analysis/win@j_@myrep.dat
+write title unit 21
+* time U
+*
+
+set f 1 ! loop over ?nstep with skipping @steps in between
+label loop_frame
+! get next coordinate set according to specifications above
+traj read
+
+!! soft-core is only implemented with blade or domdec
+shake fast bonh param
+scalar fbeta set 10.0 sele all end   !! 10 for domdec, 0.1 for blade
+domdec gpu only dlb on ndir 1 1 1
+energy
+set e1 ?ener
+write title unit 21
+* @f @e1
+
+incr f by 1 ! skip in traj reading is skipping steps
+if f le @stop goto loop_frame
+
+block
+clear
+end
+
+NOE
+   RESET
+END
+
+incr j by 1
+if j lt @nwins goto loop_lambda
+
+stop
+

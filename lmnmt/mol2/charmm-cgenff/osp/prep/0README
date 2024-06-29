@@ -1,0 +1,14 @@
+cp /net/orinoco/pga043/flipped_pose/lm-nmt/simulation/5ag5/mol7/trial1/5ag5_prot-7-neutralized.psf .
+cp /net/orinoco/pga043/flipped_pose/lm-nmt/simulation/5ag5/mol7/trial1/5ag5_prot-7-prod-oriented_20ns.crd .
+cp /net/orinoco/pga043/flipped_pose/lm-nmt/simulation/5ag5/mol7/trial1/7_rg.str .
+
+(py2) parveeng@nocat-132 /net/orinoco/pga043/flipped_pose/lm-nmt/ld/5ag5/mol7/multiple_restraints/5/msld/prep $ cp /net/orinoco/pga043/flipped_pose/lm-nmt/simulation/5ag5/mol7/flip/7r.
+7r.crd  7r.pdb  
+(py2) parveeng@nocat-132 /net/orinoco/pga043/flipped_pose/lm-nmt/ld/5ag5/mol7/multiple_restraints/5/msld/prep $ cp /net/orinoco/pga043/flipped_pose/lm-nmt/simulation/5ag5/mol7/flip/7r.* .
+cp /net/orinoco/pga043/flipped_pose/lm-nmt/simulation/5ag5/mol7/flip/7_rg.str 7r_rg.str
+cp /net/orinoco/pga043/flipped_pose/lm-nmt/simulation/5ag5/mol7/flip/7.psf 7r.psf
+cp /net/orinoco/pga043/flipped_pose/lm-nmt/simulation/5ag5/5ag5_cof_rg.str .
+
+ cp /net/orinoco/pga043/flipped_pose/lm-nmt/simulation/5ag5/mol7/flip/noe_revr.str .
+cp /net/orinoco/pga043/flipped_pose/lm-nmt/simulation/5ag5/mol7/trial1/noe_xray.str .
+

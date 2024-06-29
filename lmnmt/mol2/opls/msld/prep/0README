@@ -1,0 +1,8 @@
+cp ../../../../../../simulation/opls/5ag5/mol7/trial1/5ag5_prot-7-neutralized.psf .
+cp ../../../../../../simulation/opls/5ag5/mol7/trial1/5ag5_prot-7-prod-oriented.crd .
+cp ../../../../../../simulation/opls/5ag5/mol7/trial1/7_charmm.* .
+cp ../../../../../../simulation/opls/5ag5/mol7/flip/7.psf 7r.psf 
+cp ../../../../../../simulation/opls/5ag5/mol7/flip/7r.crd . 
+cp ../../../../../../simulation/opls/5ag5/mol7/flip/7_charmm.rtf 7r_charmm.rtf
+cp ../../../../../../simulation/opls/5ag5/mol7/flip/7_charmm.prm 7r_charmm.prm
+
