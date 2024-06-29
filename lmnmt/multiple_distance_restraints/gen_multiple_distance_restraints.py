@@ -9,6 +9,10 @@ from math import pi, sin, log
 import scipy.integrate
 import time
 
+'''
+taken from: https://github.com/michellab/Multiple-Distance-Restraints
+citation: Clark et al., JCTC, 2023 (https://doi.org/10.1021/acs.jctc.3c00139)
+'''
 ##----------------------
 if len(sys.argv) !=3:
    print('Three command line options are required.')
