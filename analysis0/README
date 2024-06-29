@@ -1,0 +1,5 @@
+# It requires ALF directory, nbshift and all the n* files in ../
+
+python3.7 InitVars.py
+
+# It will generate ../variables1.inp
