@@ -1,0 +1,14 @@
+* Stream file for topology and parameter reading
+* 
+
+! protein topology and parameter
+read rtf card name toppar/top_opls_aam.inp
+read param flex card name toppar/par_opls_aam.inp
+
+read rtf card name @dir/5ag5_cof.rtf append
+read param flex card name @dir/5ag5_cof.prm append
+
+! Custom topology and parameter files for LIG
+read rtf card name @run/@lig_charmm.rtf append
+read param flex card name @run/@lig_charmm.prm append
+

@@ -1,0 +1,28 @@
+* Append the PSFs
+*
+ 
+! Read in Topology and  Parameter files
+bomlev -2
+prnlev 0
+stream toppar.str
+prnlev 5
+bomlev 0
+
+read psf card name @dir/@prot.psf 
+read coor card name @dir/@prot.crd
+
+read psf card name @run/@lig.psf append
+read coor card name @run/@lig.crd append
+
+read psf card name @dir/5ag5_cof.psf append
+read coor card name @dir/5ag5_cof.crd append
+
+read psf card name @dir/crystal.psf append
+read coor card name @dir/crystal.crd append
+
+READ coor IGNOre SELEct RESN PROT .AND. RESN @seg .and. resn cof .and. RESN CWAT END
+
+write psf card name @run/@prot-@lig.psf
+write coor card name @run/@prot-@lig.crd
+ 
+stop

@@ -1,0 +1,66 @@
+* Molecular Dynamics
+* Heating
+*
+
+! read topology and parameter files 
+bomlev -2
+stream toppar.str
+bomlev 0
+
+read psf card name @run/@prot-@lig-neutralized.psf
+read coor card name @run/@prot-@lig-finalmini.crd
+
+
+! SETUP CRYSTAL (DEFINE, BUILD), IMAGE CENTERING W. MODIFIED PSF
+! WE USE THE SAME PARAMS AS IN SOLVATION
+set greaterval = @box
+crystal define cubic @greaterval @greaterval @greaterval 90. 90. 90.
+crystal build noper 0
+
+! These segments are used by CHARMMing for water and ions in bulk solvent
+define bulks sele segid bwat .or. segid pot .or. segid cl .or. segid sod .or. -
+segid cal .or. segid mg .or. segid ces end
+
+! Set up images -- center the protein by segment and the solvent by residue
+image byseg sele .not. resname tip3 .and. .not. bulks end
+image byres sele resname tip3 .or. bulks end
+
+! SETUP NONBOND, this time we will be using electrostatics with PME, since
+! we've set up a crystal structure.
+nbond inbfrq -1 imgfrq -1 atom vatom cdie eps 1.0 -
+    elec ewald pmew fftx @fft ffty @fft  fftz @fft  kappa 0.34 spline order 6 -
+    vdw vswitch cutnb 16.0 cutim 16.0 ctofnb 12.0 ctonnb 10.0
+
+! Configure shake
+shake bonh para sele all end
+
+open unit 41 write card name @run/@prot-@lig-heat.res !restart file that will be written
+open unit 31 write file name @run/@prot-@lig-heat.dcd !trajectory file name
+
+!random seed
+!system "echo 'set iseed = ' `date +%H%M%S` > seed.stream"
+!stream @run/seed.stream
+
+! Now variable iseed is set so any invocation using @iseed will provide a new random seed for the random sequence
+
+! dynamics command
+dyna leap verlet start -                     ! use leap-frog verlet integrator
+   timestep 0.002 nstep 10000 nprint 100 -   ! run 10000 steps @2 fs time-steps
+   iunwri 41 iuncrd 31 nsavc 200 -           ! save a restart file to unit 41, write coordinates to the trajectory every 100 steps
+   firstt 198.0 finalt 298.0 -               ! heat from 198K to 298K (100 K) 
+   ihtfrq 100 teminc 1 ieqfrq 0 -            ! heat the system 1K every 100 steps, no equilibration needed
+   iasors 1 iasvel 1 iscvel 0 ichecw 0 -     ! assign velocities via a Gaussian distribution every IHTFRQ steps, do not check temperatures (always scale)
+   ntrfrq 50  -                              ! stop rotation and translation every 50 steps
+   iseed @iseed @iseed @iseed @iseed -       ! random iseed value for velocity re-assignment
+   echeck 100.0  -                           ! If energy changes more than 100 kcal/mol bail out
+
+
+! write out the final coordinates
+ioform extended
+
+write coor card name @run/@prot-@lig-heat.crd
+* Coordinates after heating
+*
+
+stop
+

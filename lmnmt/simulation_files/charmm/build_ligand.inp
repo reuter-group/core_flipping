@@ -1,0 +1,49 @@
+* Run Segment Through CHARMM
+* CGenFF parameters for ligand
+*
+
+! read topology and parameter files
+read rtf card name toppar/top_all36_prot.rtf
+read param card flex name toppar/par_all36m_prot.prm
+prnlev 1
+bomlev -1
+read rtf card name toppar/top_all36_cgenff.rtf
+read param card flex name toppar/par_all36_cgenff.prm
+bomlev 0
+prnlev 5
+stream @run/@lig_rg.str
+
+! Read sequence from the PDB coordinate file
+read sequ pdb resi name @run/@lig.pdb
+
+bomlev -1
+generate @seg setu
+
+!bomlev -1
+read coor pdb name @run/@lig.pdb 
+!bomlev 0
+
+define fixed sele (.not. INIT) .and. (.not. hydrogen) end
+
+!Print heavy atoms with unknown coordinates
+coor print sele (.not. INIT) .and. (.not. hydrogen) end
+
+ic generate
+ic param
+ic build
+define LONEPAIR sele chem LPH end
+if ?nsel .gt. 0 coor shake sele LONEPAIR end
+prnlev 0
+hbuild sele hydr end
+prnlev 5
+
+! check if there are unknown coordinate
+define XXX sele .not. INIT show end
+if ?nsel .gt. 0 stop ! ABNORMAL TERMINATION: Undefined coordinates
+
+ENERGY
+
+write psf card name @run/@lig.psf
+write coor card name @run/@lig.crd
+stop
+

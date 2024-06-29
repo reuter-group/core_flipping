@@ -1,0 +1,76 @@
+* Neutralize system
+*
+
+! read topology and parameter files
+bomlev -2
+prnlev 1
+stream toppar.str
+prnlev 5
+bomlev 0
+
+read psf card name @run/@prot-@lig-solvated.psf
+read coor card name @run/@prot-@lig-solvated.crd
+coor copy comp
+
+! determine the net charge on the system
+scalar charge stat sele all end
+set chrg = ?stot
+
+if chrg gt 0 then
+  set ion = cla
+  set iseg = cla
+else
+  set ion = pot
+  set iseg = pot
+endif
+
+set mnd 5.5           ! minimum distance to solute, other ions
+!calc nion = abs(int(@chrg))
+set nion = @nions
+
+! INITIALIZE POTASSIUMS, REPEAT ABOVE PROCESS
+read sequ @ion @nion
+generate @iseg noang nodihe first none last none
+coor set xdir 0.0 ydir 0.0 zdir 0.0 sele segid @iseg end
+
+! RANDOM WATER REPLACEMENT
+! the number of water molecules selected should be same as the number of ions required
+set k 1
+label loop
+   define xcld sele ( .not. segid BWAT ) .or. segid @iseg end     ! EXCLUDED SEGMENTS
+   define prox sele xcld .around. @MND end                        ! NEARBY EXCLUDED ATOMS
+   define list sele atom BWAT * OH2 .and. .not. prox end          ! WATERS NOT NEARBY
+   calc in int( ?RAND * ?NSEL )      ! RANDOM INTEGER, BASED ON WATER COUNT
+   if in .lt. 1 set in ?NSEL         ! CHECK FOR ZERO, CHANGE TO MAX VALUE
+   define targ sele list .subset. @IN end  ! PICK WATER VIA RANDOM INDEX
+   coor stat sele targ end                                              ! GET OH2 ATOM COORDS, ASSIGN TO CHLORIDE
+   coor set xdir ?XAVE ydir ?YAVE zdir ?ZAVE sele atom @iseg @K @ion end
+   delete atom sele .byres. targ end sort                               ! REMOVE THE WATER MOLECULE
+   incr k by 1
+if k .le. @nion goto loop
+return
+bomlev 0
+
+! BRIEF MIN OF IONS INSERTED INTO SOLVATED MODEL
+mini sd nstep 10 nprint 1
+
+! add shake for ABNR step
+shake bonh param sele all end
+
+mini abnr nstep 25 nprint 5
+
+! WRITE THE NEW PSF containing ions
+write psf card name @run/@prot-@lig-neutralized.psf
+* @prot-@lig in CUBIC
+*
+
+! DO AN UPDATE AND WRITE THE COOR FILE
+update
+ioformat extended
+
+write coor card name @run/@prot-@lig-neutralized.crd
+* Neutralized structure.
+*
+
+stop
+

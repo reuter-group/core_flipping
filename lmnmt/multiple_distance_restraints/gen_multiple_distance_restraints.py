@@ -137,6 +137,7 @@ else:
 
 ##---------- Free Energy calculation functions -----------------------------
 '''
+!! needs to be checked, only required for ABFE calculations
 NOE
        /  0.5*KMIN*(RAVE-RMIN)**2    R<RMIN
       /

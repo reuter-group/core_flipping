@@ -1,0 +1,47 @@
+* Minimize PDB
+*
+
+! read topology and parameter file
+prnlev 1
+stream toppar.str
+prnlev 5
+
+! read the psf and coordinate file
+bomlev -1
+read psf card name @run/@prot-@lig.psf
+bomlev 0
+read coor card name @run/@prot-@lig.crd
+
+! minimize using restraints
+define BB sele ( ( type C .or. type O .or. type N .or. type CA ) .and. segid PROT ) end
+cons harm force 20.0 sele BB end
+
+cons harm force 10 sele resname COF .or. resname XRAY .or. resname REVR end
+
+! set up shake
+shake bonh param sele all end
+
+! set up electrostatics, since we're not using PME, set up switching
+! electrostatics
+nbond inbfrq -1 elec fswitch vdw vswitch cutnb 16. ctofnb 12. ctonnb 10.
+
+coor copy comp
+
+mini sd nstep 100 nprint 10 step 0.005
+mini abnr nstep 1000 nprint 100 tolg 0.01
+cons harm clear
+
+mini sd nstep 100 nprint 10 step 0.005
+mini abnr nstep 1000 nprint 100 tolg 0.01
+coor rms
+
+ioform extended
+
+write coor card name @run/@prot-@lig-initialmini.crd
+* Initial minimization, no PME.
+*
+
+write coor pdb name @run/@prot-@lig-initialmini.pdb
+
+stop
+

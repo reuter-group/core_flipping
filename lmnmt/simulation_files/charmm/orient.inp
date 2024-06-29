@@ -1,0 +1,54 @@
+* orient the trajectory
+* (just the final frame of production file)
+
+!===================================================================
+! read topology and parameter files
+bomlev -2
+prnlev 1
+stream toppar.str
+prnlev 5
+bomlev 0
+
+read psf card name @run/@prot-@lig-neutralized.psf
+read coor card name @run/@prot-@lig-finalmini.crd
+coor copy comp
+
+!===================== IMAGE ==================================================
+! set up crystal and images
+set boxsize = @box
+crystal define cubic @boxsize @boxsize @boxsize 90. 90. 90.
+crystal build noper 0
+
+! These segments are used for water and ions in bulk solvent
+define bulks sele segid bwat .or. segid pot .or. segid cl .or. segid sod .or. -
+  segid cal .or. segid mg .or. segid ces end 
+
+! You may need to change these depending on how you plan to do recentering
+image byseg sele .not. resname tip3 .and. .not. bulks end
+image byres sele resname tip3 .or. bulks end
+!===================================================================================
+
+open read unit 32 file name @run/@prot-@lig-prod.dcd
+traj query unit 32
+!echo ?nfile ?start ?skip 
+
+calc final = ?start + ?nfile * ?skip - ?skip
+!open write unit 51 file name @run/@prot-@lig-prod-oriented_20ns.crd
+
+!!"Merge" to create a new trajectory with rprotein only. The protein will
+!!  be re-oriented to have minimum CA rms wrt reference in comparison set
+!merge firstu 32 nunit 1 begin ?start end ? output 51 sele all end - !first selection to write atoms to new traj
+!      recenter orient sele segid PROT end ! this selection for root mean square fitting
+
+
+!"Merge" to create a new trajectory with rprotein only. The protein will
+!  be re-oriented to have minimum CA rms wrt reference in comparison set
+merge firstu 32 nunit 1 begin @final sele all end - !first selection to write atoms to new traj
+      recenter orient sele segid PROT end ! this selection for root mean square fitting
+
+
+write coor card name @run/@prot-@lig-prod-oriented_20ns.crd
+
+
+stop
+
