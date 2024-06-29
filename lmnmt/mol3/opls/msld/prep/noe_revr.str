@@ -1,0 +1,50 @@
+NOE 
+   assign sele atom PROT 76 O end sele atom REVR 1 CAE end - 
+   kmin 40 rmin 14.3 kmax 40 rmax 15.1 fmax 2.0
+   assign sele atom PROT 77 O end sele atom REVR 1 N01 end - 
+   kmin 40 rmin 14.5 kmax 40 rmax 15.3 fmax 2.0
+   assign sele atom PROT 73 CD1 end sele atom REVR 1 CAF end - 
+   kmin 40 rmin 14.3 kmax 40 rmax 15.1 fmax 2.0
+   assign sele atom PROT 73 O end sele atom REVR 1 CAC end - 
+   kmin 40 rmin 14.5 kmax 40 rmax 15.3 fmax 2.0
+   assign sele atom PROT 76 C end sele atom REVR 1 CAG end - 
+   kmin 40 rmin 14.6 kmax 40 rmax 15.4 fmax 2.0
+   assign sele atom PROT 76 CA end sele atom REVR 1 CAI end - 
+   kmin 40 rmin 14.4 kmax 40 rmax 15.2 fmax 2.0
+   assign sele atom PROT 76 CB end sele atom REVR 1 CAD end - 
+   kmin 40 rmin 14.0 kmax 40 rmax 14.8 fmax 2.0
+   assign sele atom PROT 76 CG end sele atom REVR 1 CAQ end - 
+   kmin 40 rmin 14.1 kmax 40 rmax 14.9 fmax 2.0
+   assign sele atom PROT 76 CD1 end sele atom REVR 1 CAJ end - 
+   kmin 40 rmin 14.2 kmax 40 rmax 15.0 fmax 2.0
+   assign sele atom PROT 73 CE1 end sele atom REVR 1 CAK end - 
+   kmin 40 rmin 14.1 kmax 40 rmax 14.9 fmax 2.0
+   assign sele atom PROT 77 N end sele atom REVR 1 CAN end - 
+   kmin 40 rmin 14.3 kmax 40 rmax 15.1 fmax 2.0
+   assign sele atom PROT 77 CA end sele atom REVR 1 OAA end - 
+   kmin 40 rmin 14.2 kmax 40 rmax 15.0 fmax 2.0
+   assign sele atom PROT 77 C end sele atom REVR 1 CAO end - 
+   kmin 40 rmin 14.2 kmax 40 rmax 15.0 fmax 2.0
+   assign sele atom PROT 77 CB end sele atom REVR 1 CAR end - 
+   kmin 40 rmin 14.3 kmax 40 rmax 15.1 fmax 2.0
+   assign sele atom PROT 77 CG end sele atom REVR 1 NAS end - 
+   kmin 40 rmin 14.4 kmax 40 rmax 15.2 fmax 2.0
+   assign sele atom PROT 77 CD end sele atom REVR 1 SAM end - 
+   kmin 40 rmin 13.9 kmax 40 rmax 14.7 fmax 2.0
+   assign sele atom PROT 78 O end sele atom REVR 1 C02 end - 
+   kmin 40 rmin 14.6 kmax 40 rmax 15.4 fmax 2.0
+   assign sele atom PROT 78 N end sele atom REVR 1 O02 end - 
+   kmin 40 rmin 14.1 kmax 40 rmax 14.9 fmax 2.0
+   assign sele atom PROT 80 N end sele atom REVR 1 C03 end - 
+   kmin 40 rmin 14.5 kmax 40 rmax 15.3 fmax 2.0
+   assign sele atom PROT 80 CA end sele atom REVR 1 CAP end - 
+   kmin 40 rmin 12.9 kmax 40 rmax 13.7 fmax 2.0
+   assign sele atom PROT 75 C end sele atom REVR 1 C01 end - 
+   kmin 40 rmin 14.3 kmax 40 rmax 15.1 fmax 2.0
+   assign sele atom PROT 75 O end sele atom REVR 1 O01 end - 
+   kmin 40 rmin 12.7 kmax 40 rmax 13.5 fmax 2.0
+
+   print 
+   print anal 
+END 
+! Total Free energy of releasing all the restraints: 7.45 kcal/mol 

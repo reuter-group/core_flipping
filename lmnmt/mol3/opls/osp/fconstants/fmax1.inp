@@ -1,0 +1,4 @@
+set lam1 = 0.5 ! xray
+set lam2 = 0.5 ! revr
+set fcon1 = 20
+set fcon2 = 20

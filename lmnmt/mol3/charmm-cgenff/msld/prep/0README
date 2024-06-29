@@ -1,0 +1,14 @@
+cp /net/orinoco/pga043/flipped_pose/lm-nmt/simulation/5ag5/mol13/flip/13r.* .
+cp /net/orinoco/pga043/flipped_pose/lm-nmt/simulation/5ag5/mol13/flip/13.psf 13r.psf
+cp /net/orinoco/pga043/flipped_pose/lm-nmt/simulation/5ag5/mol13/flip/13.str 13r.str
+
+
+cp /net/orinoco/pga043/flipped_pose/lm-nmt/simulation/5ag5/mol13/trial1/5ag5_prot-13-neutralized.psf .
+cp /net/orinoco/pga043/flipped_pose/lm-nmt/simulation/5ag5/mol13/trial1/5ag5_prot-13-prod-oriented.crd .
+cp /net/orinoco/pga043/flipped_pose/lm-nmt/simulation/5ag5/mol13/trial1/13.str .
+cp /net/orinoco/pga043/flipped_pose/lm-nmt/simulation/5ag5/5ag5_cof.str .
+
+
+cp /net/orinoco/pga043/flipped_pose/lm-nmt/simulation/5ag5/mol13/noe_XRAY.str .
+cp /net/orinoco/pga043/flipped_pose/lm-nmt/simulation/5ag5/mol13/noe_REVR.str .
+

@@ -1,0 +1,50 @@
+NOE 
+   assign sele atom PROT 376 C end sele atom XRAY 1 CAE end - 
+   kmin 40 rmin 9.7 kmax 40 rmax 10.5 fmax 2.0
+   assign sele atom PROT 90 CG end sele atom XRAY 1 OAN end - 
+   kmin 40 rmin 10.4 kmax 40 rmax 11.2 fmax 2.0
+   assign sele atom PROT 377 CB end sele atom XRAY 1 NAM end - 
+   kmin 40 rmin 9.8 kmax 40 rmax 10.6 fmax 2.0
+   assign sele atom PROT 376 O end sele atom XRAY 1 CAD end - 
+   kmin 40 rmin 9.6 kmax 40 rmax 10.5 fmax 2.0
+   assign sele atom PROT 377 N end sele atom XRAY 1 CAG end - 
+   kmin 40 rmin 9.7 kmax 40 rmax 10.5 fmax 2.0
+   assign sele atom PROT 345 O end sele atom XRAY 1 CAQ end - 
+   kmin 40 rmin 12.0 kmax 40 rmax 12.8 fmax 2.0
+   assign sele atom PROT 216 CD end sele atom XRAY 1 CAT end - 
+   kmin 40 rmin 9.8 kmax 40 rmax 10.6 fmax 2.0
+   assign sele atom PROT 326 N end sele atom XRAY 1 CAL end - 
+   kmin 40 rmin 13.4 kmax 40 rmax 14.2 fmax 2.0
+   assign sele atom PROT 220 N end sele atom XRAY 1 CAR end - 
+   kmin 40 rmin 10.2 kmax 40 rmax 11.0 fmax 2.0
+   assign sele atom PROT 326 CA end sele atom XRAY 1 NAV end - 
+   kmin 40 rmin 14.4 kmax 40 rmax 15.2 fmax 2.0
+   assign sele atom PROT 85 O end sele atom XRAY 1 CAP end - 
+   kmin 40 rmin 10.5 kmax 40 rmax 11.3 fmax 2.0
+   assign sele atom PROT 377 C end sele atom XRAY 1 CAF end - 
+   kmin 40 rmin 9.2 kmax 40 rmax 10.0 fmax 2.0
+   assign sele atom PROT 216 CB end sele atom XRAY 1 CAJ end - 
+   kmin 40 rmin 10.5 kmax 40 rmax 11.3 fmax 2.0
+   assign sele atom PROT 220 CB end sele atom XRAY 1 CAH end - 
+   kmin 40 rmin 12.5 kmax 40 rmax 13.3 fmax 2.0
+   assign sele atom PROT 90 CB end sele atom XRAY 1 CAA end - 
+   kmin 40 rmin 11.0 kmax 40 rmax 11.8 fmax 2.0
+   assign sele atom PROT 378 C end sele atom XRAY 1 CAI end - 
+   kmin 40 rmin 10.2 kmax 40 rmax 11.0 fmax 2.0
+   assign sele atom PROT 345 CD1 end sele atom XRAY 1 CAK end - 
+   kmin 40 rmin 9.7 kmax 40 rmax 10.5 fmax 2.0
+   assign sele atom PROT 345 CB end sele atom XRAY 1 CAS end - 
+   kmin 40 rmin 10.9 kmax 40 rmax 11.7 fmax 2.0
+   assign sele atom PROT 376 CA end sele atom XRAY 1 OAB end - 
+   kmin 40 rmin 10.0 kmax 40 rmax 10.8 fmax 2.0
+   assign sele atom PROT 392 CA end sele atom XRAY 1 OAC end - 
+   kmin 40 rmin 12.0 kmax 40 rmax 12.8 fmax 2.0
+   assign sele atom PROT 328 CB end sele atom XRAY 1 CAU end - 
+   kmin 40 rmin 9.4 kmax 40 rmax 10.2 fmax 2.0
+   assign sele atom PROT 232 CG end sele atom XRAY 1 SAO end - 
+   kmin 40 rmin 9.8 kmax 40 rmax 10.6 fmax 2.0
+
+   print 
+   print anal 
+END 
+! Total Free energy of releasing all the restraints: 0.16 kcal/mol 
