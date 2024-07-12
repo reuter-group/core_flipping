@@ -1,0 +1,44 @@
+2024-04-07 13:52:06 — INFO — INPUT FILE: 7.pdb
+2024-04-07 13:52:06 — INFO — NUMBER OF OPTIMIZATIONS: 0
+2024-04-07 13:52:06 — INFO — Parsing molecule from input: /net/orinoco/pga043/flipped_pose/lm-nmt/simulation/opls/5ag5/mol7/flip/7.pdb
+2024-04-07 13:52:06 — INFO — Retreiving atom names form PDB:/net/orinoco/pga043/flipped_pose/lm-nmt/simulation/opls/5ag5/mol7/flip/7.pdb
+2024-04-07 13:52:06 — INFO — Center of mass position: 26.993  5.099 15.461
+2024-04-07 13:52:06 — INFO — Closest atom to the center of mass: N  8 with distance :  1.260  (A) 
+2024-04-07 13:52:06 — INFO — MOLECULE CHARGE USED: 0
+2024-04-07 13:52:06 — INFO — CHARGE ALGORITHM USED: CM1A-LBCC
+2024-04-07 13:52:06 — INFO — AUTO ASSIGNED RESIDUE NAME: REV
+2024-04-07 13:52:06 — INFO — Parsing Bonds, Angles and dihedrals
+2024-04-07 13:52:06 — INFO — Parsing Atoms
+2024-04-07 13:52:06 — INFO — --- SUMMARY MOLECULE STRUCTURE ---
+2024-04-07 13:52:06 — INFO — Number of Atoms: 33
+2024-04-07 13:52:06 — INFO — Number of Variable Bonds: 29
+2024-04-07 13:52:06 — INFO — Number of Additional Bonds: 3
+2024-04-07 13:52:06 — INFO — Number of Variable Angles: 28
+2024-04-07 13:52:06 — INFO — Number of Additional Angles: 25
+2024-04-07 13:52:06 — INFO — Number of Variable Torsions: 27
+2024-04-07 13:52:06 — INFO — Number of Additional Torsions: 62
+2024-04-07 13:52:06 — INFO — Number of excluded Atoms: 0
+2024-04-07 13:52:06 — INFO — Generating Zmat
+2024-04-07 13:52:06 — INFO — Running BOSS
+2024-04-07 13:52:08 — INFO — Parsing BOSS molecule outputs
+2024-04-07 13:52:08 — INFO — Generating Q inputs
+2024-04-07 13:52:08 — INFO — Generating Gromacs inputs
+2024-04-07 13:52:08 — INFO — Generating CHARMM/NAMD inputs
+2024-04-07 13:52:08 — INFO — Generating TINKER inputs
+2024-04-07 13:52:08 — INFO — Generating openMM inputs
+2024-04-07 13:52:08 — INFO — Generating PQR inputs
+2024-04-07 13:52:08 — INFO — Generating DESMOND inputs
+2024-04-07 13:52:08 — INFO — Generating LAMMPS inputs
+2024-04-07 13:52:08 — INFO — Generating XPLOR inputs
+2024-04-07 13:52:08 — INFO —             
+    
+                    LigParGen finished succesfully!
+    
+    Please do not forget to cite the following references: 
+
+        1. LigParGen web server: an automatic OPLS-AA parameter generator for organic ligands  
+           Leela S. Dodda  Israel Cabeza de Vaca  Julian Tirado-Rives William L. Jorgensen 
+           Nucleic Acids Research, Volume 45, Issue W1, 3 July 2017, Pages W331–W336
+
+        2. 1.14*CM1A-LBCC: Localized Bond-Charge Corrected CM1A Charges for Condensed-Phase Simulations
+    

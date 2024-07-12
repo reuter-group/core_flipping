@@ -1,0 +1,85 @@
+TITLE     MDANALYSIS FRAME 0: Created by PDBWriter
+CRYST1    1.000    1.000    1.000  90.00  90.00  90.00 P 1           1
+REMARK     285 UNITARY VALUES FOR THE UNIT CELL AUTOMATICALLY SET
+REMARK     285 BY MDANALYSIS PDBWRITER BECAUSE UNIT CELL INFORMATION
+REMARK     285 WAS MISSING.
+REMARK     285 PROTEIN DATA BANK CONVENTIONS REQUIRE THAT
+REMARK     285 CRYST1 RECORD IS INCLUDED, BUT THE VALUES ON
+REMARK     285 THIS RECORD ARE MEANINGLESS.
+ATOM      1  CAE REVRX   1      -6.377  -6.538   7.950  1.00  0.00      REVR  
+ATOM      2  H01 REVRX   1      -6.140  -6.340   8.985  1.00  0.00      REVR  
+ATOM      3  N01 REVRX   1      -7.548  -7.168   7.710  1.00  0.00      REVR  
+ATOM      4  CAF REVRX   1      -5.104 -11.253   5.408  1.00  0.00      REVR  
+ATOM      5  H08 REVRX   1      -4.406 -11.557   4.642  1.00  0.00      REVR  
+ATOM      6  CAC REVRX   1      -4.659 -10.960   6.697  1.00  0.00      REVR  
+ATOM      7  CAG REVRX   1      -5.495  -6.138   6.927  1.00  0.00      REVR  
+ATOM      8  H02 REVRX   1      -4.568  -5.636   7.161  1.00  0.00      REVR  
+ATOM      9  CAI REVRX   1      -6.926 -10.429   7.386  1.00  0.00      REVR  
+ATOM     10  H05 REVRX   1      -7.631 -10.078   8.125  1.00  0.00      REVR  
+ATOM     11  CAD REVRX   1      -5.537 -10.533   7.707  1.00  0.00      REVR  
+ATOM     12  CAQ REVRX   1      -7.396 -10.744   6.101  1.00  0.00      REVR  
+ATOM     13  CAJ REVRX   1      -7.072  -7.056   5.333  1.00  0.00      REVR  
+ATOM     14  H04 REVRX   1      -7.380  -7.279   4.322  1.00  0.00      REVR  
+ATOM     15  CAK REVRX   1      -9.407 -10.390   3.234  1.00  0.00      REVR  
+ATOM     16  H09 REVRX   1      -8.412 -10.411   2.789  1.00  0.00      REVR  
+ATOM     17  H10 REVRX   1     -10.148 -10.461   2.437  1.00  0.00      REVR  
+ATOM     18  CAN REVRX   1      -9.492  -9.092   3.991  1.00  0.00      REVR  
+ATOM     19  OAA REVRX   1      -9.855  -8.054   3.451  1.00  0.00      REVR  
+ATOM     20  CAO REVRX   1      -5.849  -6.408   5.591  1.00  0.00      REVR  
+ATOM     21  H17 REVRX   1      -5.195  -6.124   4.780  1.00  0.00      REVR  
+ATOM     22  CAR REVRX   1      -8.883 -10.555   5.784  1.00  0.00      REVR  
+ATOM     23  H11 REVRX   1      -9.447 -10.756   6.695  1.00  0.00      REVR  
+ATOM     24  NAS REVRX   1      -9.175  -9.210   5.285  1.00  0.00      REVR  
+ATOM     25  SAM REVRX   1      -9.583 -11.649   4.517  1.00  0.00      REVR  
+ATOM     26  C02 REVRX   1      -5.861  -9.774   9.963  1.00  0.00      REVR  
+ATOM     27  H14 REVRX   1      -5.283  -9.563  10.862  1.00  0.00      REVR  
+ATOM     28  H15 REVRX   1      -6.602 -10.529  10.223  1.00  0.00      REVR  
+ATOM     29  H16 REVRX   1      -6.374  -8.853   9.682  1.00  0.00      REVR  
+ATOM     30  O02 REVRX   1      -4.994 -10.229   8.930  1.00  0.00      REVR  
+ATOM     31  C03 REVRX   1      -9.237  -8.080   6.214  1.00  0.00      REVR  
+ATOM     32  H06 REVRX   1      -9.619  -8.415   7.178  1.00  0.00      REVR  
+ATOM     33  H13 REVRX   1      -9.938  -7.320   5.869  1.00  0.00      REVR  
+ATOM     34  CAP REVRX   1      -7.884  -7.424   6.426  1.00  0.00      REVR  
+ATOM     35  C01 REVRX   1      -6.479 -11.127   5.099  1.00  0.00      REVR  
+ATOM     36  H12 REVRX   1      -6.805 -11.337   4.091  1.00  0.00      REVR  
+ATOM     37  O01 REVRX   1      -3.335 -11.064   7.023  1.00  0.00      REVR  
+ATOM     38  H07 REVRX   1      -3.289 -10.816   7.934  1.00  0.00      REVR  
+CONECT    1    2    3    7
+CONECT    2    1
+CONECT    3    1   34
+CONECT    4    5    6   35
+CONECT    5    4
+CONECT    6    4   11   37
+CONECT    7    1    8   20
+CONECT    8    7
+CONECT    9   10   11   12
+CONECT   10    9
+CONECT   11    6    9   30
+CONECT   12    9   22   35
+CONECT   13   14   20   34
+CONECT   14   13
+CONECT   15   16   17   18   25
+CONECT   16   15
+CONECT   17   15
+CONECT   18   15   19   24
+CONECT   19   18
+CONECT   20    7   13   21
+CONECT   21   20
+CONECT   22   12   23   24   25
+CONECT   23   22
+CONECT   24   18   22   31
+CONECT   25   15   22
+CONECT   26   27   28   29   30
+CONECT   27   26
+CONECT   28   26
+CONECT   29   26
+CONECT   30   11   26
+CONECT   31   24   32   33   34
+CONECT   32   31
+CONECT   33   31
+CONECT   34    3   13   31
+CONECT   35    4   12   36
+CONECT   36   35
+CONECT   37    6   38
+CONECT   38   37
+END
